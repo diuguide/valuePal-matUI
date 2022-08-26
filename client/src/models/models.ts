@@ -3,7 +3,11 @@ export interface User {
     firstName: string,
     email: string,
     totalCash: number,
-    assetValue: 0
+    assetValue: number
   }
 
-  
+export interface Login {
+    username: string,
+    password: string
+}
+

@@ -1,16 +1,8 @@
 import axios from "axios";
+import { Login } from "../models/models";
 
-export interface User {
-  username: string,
-  firstName: string,
-  email: string,
-  totalCash: number,
-  assetValue: 0
-
-}
-
-const localUrl : String = "http://localhost:8080/";
-const awsUrl : String =
+const localUrl : string = "http://localhost:8080/";
+const awsUrl : string =
   "http://testenv-env.eba-xk2s4afv.us-east-1.elasticbeanstalk.com/";
 
 //Client connection
@@ -37,7 +29,7 @@ export const authClient = axios.create({
 //   return response;
 // };
 
-export const loginUser = async (user) => {
+export const loginUser = async (user : Login) => {
   let response = await authClient.post("/login", user);
   return response;
 };
