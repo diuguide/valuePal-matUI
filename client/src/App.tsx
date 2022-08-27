@@ -1,14 +1,16 @@
 import React from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import SignInSide from "./component/SignIn/SignIn";
 
 function App() {
   return (
     <BrowserRouter>
-      <Route path="/">
-        <SignInSide />
-      </Route>
+      <Routes>
+        <Route path="/" element={ <SignInSide />}>
+         
+        </Route>
+      </Routes>
     </BrowserRouter>
   );
 }
