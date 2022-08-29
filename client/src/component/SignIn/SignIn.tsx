@@ -14,6 +14,8 @@ import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Login } from "../../models/models";
 import { loginUser } from "../../utility/auth";
+import { History } from "history";
+import { useNavigate } from "react-router-dom";
 
 function Copyright(props: any) {
   return (
@@ -36,6 +38,8 @@ function Copyright(props: any) {
 const theme = createTheme();
 
 export default function SignInSide() {
+  let navigate = useNavigate();
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -44,7 +48,12 @@ export default function SignInSide() {
       password: data.get("password") as string,
     };
     loginUser(user)
-      .then((res) => console.log("Response: ", res))
+      .then((res) => {
+        if (res.status === 200) {
+          alert("SUCCESS, ");
+          navigate(`/users/${data.get("username")}`);
+        }
+      })
       .catch((err) => console.error(err));
   };
 
